@@ -10,7 +10,7 @@ def pdf_to_png(path:str):
 		print("erreur")
 	else:	
 		for index, image in enumerate(images):
-			image.save('page{0}.png'.format(index), 'PNG')
+			image.save('{0}_{1}.png'.format(path.split('.')[0],index), 'PNG')
 		print("fin de traitement.")
 
 def jpg_to_png(path:str):
@@ -33,12 +33,13 @@ def png_to_jpg(path:str):
 
 
 if __name__ == '__main__':
-	choix = """
-	0 : pdf_to_png
-	1 : jpg_to_png
-	2 : png_to_jpg
-	"""
-	choix = int(input(choix))
+	choix = """0 : pdf_to_png
+1 : jpg_to_png
+2 : png_to_jpg"""
+	try:
+		choix = int(input(choix))
+	except:
+		pass
 	match choix:
 		case 0:
 			path = input("path du pdf ?")
