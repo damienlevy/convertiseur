@@ -10,25 +10,28 @@ def pdf_to_png(path:str):
 		print("erreur")
 	else:	
 		for index, image in enumerate(images):
-			image.save('{0}_{1}.png'.format(path.split('.')[0],index), 'PNG')
+			image.save('{0}_{1}_png.png'.format(path.split('.')[0],index), 'PNG')
 		print("fin de traitement.")
 
 def jpg_to_png(path:str):
 	try:
 		img = Image.open(path)
-	except:
+	except Exception as e:
 		print("erreur.")
+		print(e)
 	else:
-		path_sortie = '{0}.png'.format(path.split('.')[0])
+		path_sortie = '{0}_png.png'.format(path.split('.')[0])
 		img.save(path_sortie)
 
 def png_to_jpg(path:str):
 	try:
 		img = Image.open(path)
-	except:
+		img = img.convert('RGB')
+	except Exception as e:
 		print("erreur.")
+		print(e)
 	else:
-		path_sortie = '{0}.jpg'.format(path.split('.')[0])
+		path_sortie = '{0}_jpg.jpg'.format(path.split('.')[0])
 		img.save(path_sortie)
 
 
